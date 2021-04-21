@@ -4,7 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuizCardWidget extends StatelessWidget {
-  QuizCardWidget({Key? key}) : super(key: key);
+  final String title;
+  final String value;
+  final double percent;
+  final String image;
+  QuizCardWidget(
+      {Key? key,
+      required this.title,
+      required this.value,
+      required this.percent,
+      required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class QuizCardWidget extends StatelessWidget {
           SizedBox(
             height: 24,
           ),
-          Text("Gerencianeto de Estado", style: AppTextStyles.heading15),
+          Text(title, style: AppTextStyles.heading15),
           SizedBox(
             height: 24,
           ),
@@ -35,10 +45,10 @@ class QuizCardWidget extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: Text(
-                    "3 de 10",
+                    value,
                     style: AppTextStyles.body11,
                   )),
-              Expanded(flex: 2, child: ProgressIndicatorWidget(value: 0.3))
+              Expanded(flex: 2, child: ProgressIndicatorWidget(value: percent))
             ],
           )
         ],
